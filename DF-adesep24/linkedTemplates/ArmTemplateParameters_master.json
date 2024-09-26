@@ -1,0 +1,96 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DF-adesep24"
+		},
+		"LS_BLOB_connectionString": {
+			"value": ""
+		},
+		"LS_DBS_accessToken": {
+			"value": ""
+		},
+		"LS_KV_BLOB_connectionString": {
+			"value": "DefaultEndpointsProtocol=https;AccountName=adlssep24;"
+		},
+		"LS_SQL_password": {
+			"value": ""
+		},
+		"LS_SQL_PARAM_password": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://kv-adesep24.vault.azure.net/"
+		},
+		"LS_DBS_properties_typeProperties_existingClusterId": {
+			"value": "0917-041712-sbeyg13"
+		},
+		"LS_KV_SQL_properties_typeProperties_server": {
+			"value": "sqlserver-sep24.database.windows.net"
+		},
+		"LS_KV_SQL_properties_typeProperties_database": {
+			"value": "db-adesep24"
+		},
+		"LS_KV_SQL_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"value": "sqlserver-sep24.database.windows.net"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"value": "db-adesep24"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_server": {
+			"value": "sqlserver-sep24.database.windows.net"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_database": {
+			"value": "@{linkedService().db_Name}"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_userName": {
+			"value": "sqladmin"
+		},
+		"Daily_6am_properties_Triggers_parameters_Input_Table": {
+			"value": "test"
+		},
+		"Daily_6am_properties_Triggers_parameters_Output_Table": {
+			"value": "test"
+		},
+		"TBL_A2B_properties_Triggers_parameters_Input_Table": {
+			"value": "TBL_A"
+		},
+		"TBL_A2B_properties_Triggers_parameters_Output_Table": {
+			"value": "TBL_B"
+		},
+		"TBL_INPUT2OUTPUT_properties_Triggers_parameters_Input_Table": {
+			"value": "TBL_INPUT"
+		},
+		"TBL_INPUT2OUTPUT_properties_Triggers_parameters_Output_Table": {
+			"value": "TBL_OUPUT"
+		},
+		"TBL_X2Y_properties_Triggers_parameters_Input_Table": {
+			"value": "TBL_X"
+		},
+		"TBL_X2Y_properties_Triggers_parameters_Output_Table": {
+			"value": "TBL_Y"
+		},
+		"Tumbling_Trigger_properties_pipeline_parameters_EndTime": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"Tumbling_Trigger_properties_pipeline_parameters_StartTime": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/8d94cab8-01d2-4554-8dcd-31b22aa260c4/resourceGroups/RG-ADESEP24/providers/Microsoft.Storage/storageAccounts/adlssep24"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

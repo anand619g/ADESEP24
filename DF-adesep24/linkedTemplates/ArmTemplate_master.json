@@ -1,0 +1,292 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DF-adesep24"
+		},
+		"LS_BLOB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BLOB'"
+		},
+		"LS_DBS_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'LS_DBS'"
+		},
+		"LS_KV_BLOB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_KV_BLOB'",
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=adlssep24;"
+		},
+		"LS_SQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL'"
+		},
+		"LS_SQL_PARAM_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_PARAM'"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://kv-adesep24.vault.azure.net/"
+		},
+		"LS_DBS_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0917-041712-sbeyg13"
+		},
+		"LS_KV_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserver-sep24.database.windows.net"
+		},
+		"LS_KV_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "db-adesep24"
+		},
+		"LS_KV_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"LS_SQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserver-sep24.database.windows.net"
+		},
+		"LS_SQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "db-adesep24"
+		},
+		"LS_SQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sqlserver-sep24.database.windows.net"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "@{linkedService().db_Name}"
+		},
+		"LS_SQL_PARAM_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
+		},
+		"Daily_6am_properties_Triggers_parameters_Input_Table": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"Daily_6am_properties_Triggers_parameters_Output_Table": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"TBL_A2B_properties_Triggers_parameters_Input_Table": {
+			"type": "string",
+			"defaultValue": "TBL_A"
+		},
+		"TBL_A2B_properties_Triggers_parameters_Output_Table": {
+			"type": "string",
+			"defaultValue": "TBL_B"
+		},
+		"TBL_INPUT2OUTPUT_properties_Triggers_parameters_Input_Table": {
+			"type": "string",
+			"defaultValue": "TBL_INPUT"
+		},
+		"TBL_INPUT2OUTPUT_properties_Triggers_parameters_Output_Table": {
+			"type": "string",
+			"defaultValue": "TBL_OUPUT"
+		},
+		"TBL_X2Y_properties_Triggers_parameters_Input_Table": {
+			"type": "string",
+			"defaultValue": "TBL_X"
+		},
+		"TBL_X2Y_properties_Triggers_parameters_Output_Table": {
+			"type": "string",
+			"defaultValue": "TBL_Y"
+		},
+		"Tumbling_Trigger_properties_pipeline_parameters_EndTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
+		"Tumbling_Trigger_properties_pipeline_parameters_StartTime": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/8d94cab8-01d2-4554-8dcd-31b22aa260c4/resourceGroups/RG-ADESEP24/providers/Microsoft.Storage/storageAccounts/adlssep24"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DF-adesep24_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_BLOB_connectionString": {
+						"value": "[parameters('LS_BLOB_connectionString')]"
+					},
+					"LS_DBS_accessToken": {
+						"value": "[parameters('LS_DBS_accessToken')]"
+					},
+					"LS_SQL_password": {
+						"value": "[parameters('LS_SQL_password')]"
+					},
+					"LS_SQL_PARAM_password": {
+						"value": "[parameters('LS_SQL_PARAM_password')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"LS_DBS_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('LS_DBS_properties_typeProperties_existingClusterId')]"
+					},
+					"LS_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_server')]"
+					},
+					"LS_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_database')]"
+					},
+					"LS_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_PARAM_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_PARAM_properties_typeProperties_server')]"
+					},
+					"LS_SQL_PARAM_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_PARAM_properties_typeProperties_database')]"
+					},
+					"LS_SQL_PARAM_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_PARAM_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DF-adesep24_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_KV_BLOB_connectionString": {
+						"value": "[parameters('LS_KV_BLOB_connectionString')]"
+					},
+					"LS_KV_SQL_properties_typeProperties_server": {
+						"value": "[parameters('LS_KV_SQL_properties_typeProperties_server')]"
+					},
+					"LS_KV_SQL_properties_typeProperties_database": {
+						"value": "[parameters('LS_KV_SQL_properties_typeProperties_database')]"
+					},
+					"LS_KV_SQL_properties_typeProperties_userName": {
+						"value": "[parameters('LS_KV_SQL_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-adesep24_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "DF-adesep24_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Daily_6am_properties_Triggers_parameters_Input_Table": {
+						"value": "[parameters('Daily_6am_properties_Triggers_parameters_Input_Table')]"
+					},
+					"Daily_6am_properties_Triggers_parameters_Output_Table": {
+						"value": "[parameters('Daily_6am_properties_Triggers_parameters_Output_Table')]"
+					},
+					"TBL_A2B_properties_Triggers_parameters_Input_Table": {
+						"value": "[parameters('TBL_A2B_properties_Triggers_parameters_Input_Table')]"
+					},
+					"TBL_A2B_properties_Triggers_parameters_Output_Table": {
+						"value": "[parameters('TBL_A2B_properties_Triggers_parameters_Output_Table')]"
+					},
+					"TBL_INPUT2OUTPUT_properties_Triggers_parameters_Input_Table": {
+						"value": "[parameters('TBL_INPUT2OUTPUT_properties_Triggers_parameters_Input_Table')]"
+					},
+					"TBL_INPUT2OUTPUT_properties_Triggers_parameters_Output_Table": {
+						"value": "[parameters('TBL_INPUT2OUTPUT_properties_Triggers_parameters_Output_Table')]"
+					},
+					"TBL_X2Y_properties_Triggers_parameters_Input_Table": {
+						"value": "[parameters('TBL_X2Y_properties_Triggers_parameters_Input_Table')]"
+					},
+					"TBL_X2Y_properties_Triggers_parameters_Output_Table": {
+						"value": "[parameters('TBL_X2Y_properties_Triggers_parameters_Output_Table')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-adesep24_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "DF-adesep24_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Tumbling_Trigger_properties_pipeline_parameters_EndTime": {
+						"value": "[parameters('Tumbling_Trigger_properties_pipeline_parameters_EndTime')]"
+					},
+					"Tumbling_Trigger_properties_pipeline_parameters_StartTime": {
+						"value": "[parameters('Tumbling_Trigger_properties_pipeline_parameters_StartTime')]"
+					},
+					"eventtrigger_properties_typeProperties_scope": {
+						"value": "[parameters('eventtrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-adesep24_ArmTemplate_2')]"
+			]
+		}
+	]
+}
