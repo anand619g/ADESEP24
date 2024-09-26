@@ -1,0 +1,17 @@
+{
+	"name": "Daily_7am",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2024-09-25T02:50:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

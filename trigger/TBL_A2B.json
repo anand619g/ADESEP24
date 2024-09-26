@@ -1,0 +1,28 @@
+{
+	"name": "TBL_A2B",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Triggers",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Input_Table": "TBL_A",
+					"Output_Table": "TBL_B"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2024-09-25T02:53:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

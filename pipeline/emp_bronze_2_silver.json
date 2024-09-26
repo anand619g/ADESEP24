@@ -1,0 +1,30 @@
+{
+	"name": "emp_bronze_2_silver",
+	"properties": {
+		"activities": [
+			{
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/reddykaushik636@gmail.com/emp_bronze_2_silver"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_DBS",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-09-17T04:55:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,46 @@
+{
+	"name": "Dynamic_KV_SQL_tABLE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_KV_SQL",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "ADDRESS",
+				"type": "varchar"
+			},
+			{
+				"name": "MAILCODE",
+				"type": "varchar"
+			},
+			{
+				"name": "CITY",
+				"type": "varchar"
+			},
+			{
+				"name": "COUNTRY",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

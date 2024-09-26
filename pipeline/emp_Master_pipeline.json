@@ -1,0 +1,72 @@
+{
+	"name": "emp_Master_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "emp_on_prem_2_bronze",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "ON_PREM_2_ADLS_BRONZE",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "emp_bronze_2_Silver",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "emp_on_prem_2_bronze",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "emp_bronze_2_silver",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "emp_silver_2_gold",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "emp_bronze_2_Silver",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "emp_Silver_2_gold",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-09-17T04:55:39Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

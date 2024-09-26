@@ -1,0 +1,27 @@
+{
+	"name": "TBL_4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "EMPID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EMPNAME",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TBL_4"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

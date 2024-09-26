@@ -1,0 +1,40 @@
+{
+	"name": "Daily_6am",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "schedule_Trigger",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "emp_Silver_2_gold",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "Triggers",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Input_Table": "test",
+					"Output_Table": "test"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2024-09-25T02:48:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

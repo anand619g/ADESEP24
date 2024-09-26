@@ -1,0 +1,9 @@
+{
+	"name": "DF-adesep24",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cfd7d5bb-2ad5-4737-a0ed-5fefe7edcf55",
+		"tenantId": "31cd3096-5999-40fe-a12e-c5a13c807f6b"
+	}
+}
